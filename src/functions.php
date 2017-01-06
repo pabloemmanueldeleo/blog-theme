@@ -95,11 +95,18 @@ function html5blank_header_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
         if (HTML5_DEBUG) {
+            // Dependencies
+            wp_register_script(
+              'fontfaceobserver',
+              get_template_directory_uri() . '/bower_components/fontfaceobserver/fontfaceobserver.standalone.js',
+              array(),
+              '1.11.1',
+              true);
             // Custom scripts
             wp_register_script(
                 'html5blankscripts',
                 get_template_directory_uri() . '/js/scripts.js',
-                array(),
+                array('fontfaceobserver'),
                 '1.0.0',
                 true);
 
@@ -109,7 +116,7 @@ function html5blank_header_scripts()
         // If production
         } else {
             // Scripts minify
-            wp_register_script('html5blankscripts-min', get_template_directory_uri() . '/js/scripts.min.js', array(), '1.0.0', true);
+            wp_register_script('html5blankscripts-min', get_template_directory_uri() . '/js/scripts.min.js', array('fontfaceobserver'), '1.0.0', true);
             // Enqueue Scripts
             wp_enqueue_script('html5blankscripts-min');
         }
