@@ -135,8 +135,7 @@ gulp.task( "envProduction", function() {
 
 /** Livereload */
 gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
-	var server = $.livereload();
-
+	var livereload = require('gulp-livereload');
 	/** Watch for livereoad */
 	gulp.watch([
 		"src/js/**/*.js",
@@ -144,7 +143,7 @@ gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
 		"src/*.css"
 	]).on( "change", function( file ) {
 		console.log( file.path );
-		server.changed( file.path );
+		livereload.changed( file.path );
 	});
 
 	/** Watch for autoprefix */
