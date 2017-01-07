@@ -228,6 +228,20 @@ article p {
   .form-submit input:hover {
     text-decoration: underline; }
 
+.pagination {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 300; }
+
+.page-numbers {
+  margin-right: 5px;
+  color: rgba(0, 0, 0, 0.44); }
+
+.current {
+  color: #444;
+  text-decoration: underline; }
+
 /**
  * partials/wordpress
  * ---
