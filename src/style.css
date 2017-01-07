@@ -153,6 +153,7 @@ input[type="search"] {
 
 .article-content,
 .home .post,
+.tag .post,
 .comment-body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.11);
   margin-bottom: 20px; }
@@ -176,6 +177,13 @@ article p {
   margin-top: 20px;
   color: rgba(0, 0, 0, 0.44);
   font-size: 16px; }
+
+.tag-title {
+  background: #ff53a5;
+  color: #fff;
+  padding: 8px;
+  display: inline-block;
+  margin-bottom: 10px; }
 
 .comments-title,
 .comment-reply-title {
