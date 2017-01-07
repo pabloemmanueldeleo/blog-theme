@@ -1,8 +1,8 @@
-/* jshint node: true */
 /* global $: true */
 "use strict";
 
 var gulp = require( "gulp" ),
+  browserify = require( "gulp-browserify" ),
 	/** @type {Object} Loader of Gulp plugins from `package.json` */
 	$ = require( "gulp-load-plugins" )(),
 	/** @type {Array} JS source files to concatenate and uglify */
@@ -82,6 +82,13 @@ gulp.task( "sass", function () {
 		.pipe( gulp.dest( "src/css" ) );
 });
 
+/** Javascript **/
+gulp.task( "js", function () {
+	return gulp.src( "src/js/lib/scripts.js" )
+		.pipe( browserify() )
+		.pipe( gulp.dest('src/js') );
+});
+
 /** STYLES */
 gulp.task( "styles", [ "sass" ], function() {
 	console.log( "`styles` task run in `" + env + "` environment" );
@@ -98,15 +105,6 @@ gulp.task( "styles", [ "sass" ], function() {
 			console.error( e );
 		})
 		.pipe( gulp.dest( "src" ) );
-});
-
-/** JSHint */
-gulp.task( "jshint", function () {
-	/** Test all `js` files exclude those in the `lib` folder */
-	return gulp.src( "src/js/{!(lib)/*.js,*.js}" )
-		.pipe( $.jshint() )
-		.pipe( $.jshint.reporter( "jshint-stylish" ) )
-		.pipe( $.jshint.reporter( "fail" ) );
 });
 
 /** Templates */
@@ -134,14 +132,14 @@ gulp.task( "envProduction", function() {
 });
 
 /** Livereload */
-gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
+gulp.task( "watch", [ "template", "styles" ], function() {
 	var livereload = require('gulp-livereload');
 	/** Watch for livereoad */
 	gulp.watch([
 		"src/js/**/*.js",
 		"src/*.php",
 		"src/*.css"
-	]).on( "change", function( file ) {
+	], [ "js" ] ).on( "change", function( file ) {
 		console.log( file.path );
 		livereload.changed( file.path );
 	});
@@ -151,9 +149,6 @@ gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
 		"src/css/*.css",
 		"src/css/sass/**/*.scss"
 	], [ "styles" ] );
-
-	/** Watch for JSHint */
-	gulp.watch( "src/js/{!(lib)/*.js,*.js}", ["jshint"] );
 });
 
 /** Build */
@@ -162,7 +157,6 @@ gulp.task( "build", [
 	"clean",
 	"template",
 	"styles",
-	"jshint",
 	"copy",
 	"uglify"
 ], function () {
