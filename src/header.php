@@ -12,6 +12,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="<?php bloginfo('description'); ?>">
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Lora|Montez" rel="stylesheet">
 
 		<?php wp_head(); ?>
 
@@ -31,12 +32,13 @@
 							<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="Ren Aysha" class="logo-img">
 						</a>
 					</div>
+					<h1 class="header-title">
+						Ren Aysha
+					</h1>
 					<!-- /logo -->
 
 					<!-- nav -->
-					<nav class="nav" role="navigation">
-						<?php html5blank_nav(); ?>
-					</nav>
+
 					<!-- /nav -->
 
 			</header>

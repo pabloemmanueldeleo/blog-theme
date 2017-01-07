@@ -5,12 +5,16 @@
 
 
 // Header container
-.header {
-}
 
-// Logo
+.header,
 .logo {
   text-align: center;
+}
+
+.header-title {
+  font-family: 'Montez', cursive;
+  font-size: 100px;
+  font-weight: normal;
 }
 
 .logo-img {
