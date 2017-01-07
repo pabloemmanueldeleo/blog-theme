@@ -12,6 +12,12 @@
   margin-bottom: 30px;
 }
 
+.article-content,
+.home .post,
+.comment-body {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+  margin-bottom: 20px;
+}
 
 .separator {
   margin: 0 3px;

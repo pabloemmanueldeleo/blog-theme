@@ -1,0 +1,75 @@
+.comments-title,
+.comment-reply-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.comments-title {
+  margin-bottom: 20px;
+}
+
+.comment-name {
+  font-size: 18px;
+}
+
+.comment-author {
+  float: left;
+  padding-right: 16px;
+}
+
+.comment-container {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.comment-meta,
+.comment-notes,
+.logged-in-as {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+.comment-meta {
+  margin-bottom: 10px;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.comment-form-comment,
+.comment-form-author,
+.comment-form-email,
+.comment-form-url {
+  font-family: 'Lato', sans-serif;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+
+  input, textarea {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+  }
+
+  input {
+    height: 34px;
+  }
+}
+
+.form-submit {
+  input {
+    float: right;
+    border: 0;
+    background: #ff53a5;
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

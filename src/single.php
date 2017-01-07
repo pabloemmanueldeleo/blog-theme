@@ -41,7 +41,9 @@
 			</div>
 			<!-- /post details -->
 
-			<?php the_content(); // Dynamic Content ?>
+			<div class="article-content">
+				<?php the_content(); // Dynamic Content ?>
+			</div>
 
 
 			<?php comments_template(); ?>

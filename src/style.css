@@ -151,6 +151,12 @@ input[type="search"] {
   font-weight: 300;
   margin-bottom: 30px; }
 
+.article-content,
+.home .post,
+.comment-body {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+  margin-bottom: 20px; }
+
 .separator {
   margin: 0 3px; }
 
@@ -170,6 +176,74 @@ article p {
   margin-top: 20px;
   color: rgba(0, 0, 0, 0.44);
   font-size: 16px; }
+
+.comments-title,
+.comment-reply-title {
+  font-size: 20px;
+  font-weight: bold; }
+
+.comments-title {
+  margin-bottom: 20px; }
+
+.comment-name {
+  font-size: 18px; }
+
+.comment-author {
+  float: left;
+  padding-right: 16px; }
+
+.comment-container {
+  overflow: hidden;
+  margin-bottom: 20px; }
+
+.comment-meta,
+.comment-notes,
+.logged-in-as {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300; }
+
+.comment-meta {
+  margin-bottom: 10px; }
+
+.avatar {
+  border-radius: 50%; }
+
+.comment-form-comment,
+.comment-form-author,
+.comment-form-email,
+.comment-form-url {
+  font-family: 'Lato', sans-serif; }
+  .comment-form-comment label,
+  .comment-form-author label,
+  .comment-form-email label,
+  .comment-form-url label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 300; }
+  .comment-form-comment input, .comment-form-comment textarea,
+  .comment-form-author input,
+  .comment-form-author textarea,
+  .comment-form-email input,
+  .comment-form-email textarea,
+  .comment-form-url input,
+  .comment-form-url textarea {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.11); }
+  .comment-form-comment input,
+  .comment-form-author input,
+  .comment-form-email input,
+  .comment-form-url input {
+    height: 34px; }
+
+.form-submit input {
+  float: right;
+  border: 0;
+  background: #ff53a5;
+  color: #fff;
+  padding: 10px;
+  font-size: 14px; }
+  .form-submit input:hover {
+    text-decoration: underline; }
 
 /**
  * partials/wordpress
