@@ -354,10 +354,49 @@ article p {
 .header-title {
   font-family: 'Montez', cursive;
   font-size: 100px;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #333; }
 
 .logo-img {
   border-radius: 50%; }
+
+.social {
+  margin: 20px auto;
+  width: 300px; }
+  .social ul {
+    list-style-type: none; }
+  .social li {
+    display: inline-block;
+    padding-left: 23px; }
+    .social li:first-child {
+      padding-left: 0; }
+  .social .fa {
+    font-size: 36px;
+    color: rgba(0, 0, 0, 0.44); }
+    .social .fa:hover {
+      animation: cuteness .4s ease-out; }
+  .social .fa-twitter:hover {
+    color: #2daae2; }
+  .social .fa-linkedin-square:hover {
+    color: #007bb6; }
+  .social .fa-github:hover {
+    color: #333; }
+  .social .fa-codepen:hover {
+    color: #333; }
+  .social .fa-dribbble:hover {
+    color: #c32361; }
+
+@keyframes cuteness {
+  100%, 25%, 50%, 75% {
+    transform-origin: top center 50%; }
+  25% {
+    transform: rotate(8deg); }
+  50% {
+    transform: rotate(-8deg); }
+  75% {
+    transform: rotate(10deg); }
+  100% {
+    transform: rotate(0deg); } }
 
 /**
  * partials/nav

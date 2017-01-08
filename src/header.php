@@ -13,6 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Lora|Montez" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<?php wp_head(); ?>
 
@@ -35,6 +36,17 @@
 					<h1 class="header-title">
 						Ren Aysha
 					</h1>
+
+					<div class="social">
+						<ul>
+							<li><a href="https://twitter.com/RenettaRenula"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="https://sg.linkedin.com/in/aysha-anggraini-a05a8249"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+							<li><a href="https://github.com/renettarenula/"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+							<li><a href="http://codepen.io/rrenula/"><i class="fa fa-codepen" aria-hidden="true"></i></a></li>
+							<li><a href="https://dribbble.com/renaysha"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+
 					<!-- /logo -->
 
 					<!-- nav -->
