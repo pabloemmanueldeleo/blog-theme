@@ -29,7 +29,7 @@
 						</a>
 					</div>
 					<h1 class="header-title">
-						Ren Aysha
+						<a href="<?php echo home_url(); ?>">Ren Aysha</a>
 					</h1>
 
 					<span class="description-title">

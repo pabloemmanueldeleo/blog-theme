@@ -146,7 +146,6 @@ input[type="search"] {
   margin: 0 3px; }
 
 article p,
-article h3,
 .intro p {
   font-family: 'Lora', serif;
   font-size: 18px;
@@ -154,33 +153,33 @@ article h3,
   line-height: 1.68em;
   margin-bottom: 20px; }
   article p a,
-  article h3 a,
   .intro p a {
     color: #ff53a5; }
 
-article h3, article h4, article h5, article h6 {
+.article-content h3, .article-content h4, .article-content h5, .article-content h6 {
   font-weight: bold;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  font-family: 'Lora', serif; }
 
-article h3 {
+.article-content h3 {
   font-size: 22px; }
 
-article ul, article ol {
+.article-content ul, .article-content ol {
   font-family: 'Lora', serif;
   font-size: 18px;
   font-weight: normal;
   margin-left: 40px;
   margin-bottom: 20px; }
 
-article ul {
+.article-content ul {
   list-style-type: disc; }
 
-article ol {
+.article-content ol {
   list-style-type: decimal; }
 
-article li {
+.article-content li {
   line-height: 1.68em;
-  margin-bottom: 8px; }
+  margin-bottom: 4px; }
 
 .view-article {
   display: block;
@@ -368,6 +367,8 @@ article li {
   font-size: 80px;
   font-weight: normal;
   color: #333; }
+  .header-title a:hover {
+    text-decoration: none; }
 
 .description-title {
   font-family: 'Lora', serif;

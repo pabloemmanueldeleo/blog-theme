@@ -26,7 +26,6 @@
 }
 
 article p,
-article h3,
 .intro p {
   font-family: 'Lora', serif;
   font-size: 18px;
@@ -39,18 +38,19 @@ article h3,
   }
 }
 
-article {
+.article-content {
   h3, h4, h5, h6 {
     font-weight: bold;
     margin-bottom: 0;
+    font-family: 'Lora', serif;
   }
 }
 
-article h3 {
+.article-content h3 {
   font-size: 22px;
 }
 
-article {
+.article-content {
   ul, ol {
     font-family: 'Lora', serif;
     font-size: 18px;
@@ -69,7 +69,7 @@ article {
 
   li {
     line-height: 1.68em;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 }
 
