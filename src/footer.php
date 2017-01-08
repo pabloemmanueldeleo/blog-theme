@@ -1,10 +1,23 @@
 			<!-- footer -->
 			<footer class="footer" role="contentinfo">
 
+				<div class="clear intro">
+					<div class="comment-author">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/pic.jpg" alt="Ren Aysha" class="logo-img">
+					</div>
+					<div class="comment-container">
+						<p>
+							My name is Aysha and I am a Software Engineer by day and a wannabe circus artist by night.
+							This is a space where I get to talk about my obsessions which involve code, movement, and cats.
+							Curious? You can read more about me <a href="/about">here</a>.
+						</p>
+					</div>
+				</div>
+
 				<!-- copyright -->
 				<p class="copyright">
-					&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Powered by', 'html5blank'); ?>
-					<a href="//wordpress.org">WordPress</a> &amp; <a href="//html5blank.com">HTML5 Blank</a>.
+					Copyright &copy; Ren Aysha 2013 — <?php echo date('Y'); ?><br />
+					Most of my code is open source so feel free to use them and modify as needed
 				</p>
 				<!-- /copyright -->
 
@@ -15,6 +28,8 @@
 		<!-- /wrapper -->
 
 		<?php wp_footer(); ?>
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Lora|Montez" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<!-- analytics -->
 		<script>

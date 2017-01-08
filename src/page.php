@@ -1,10 +1,13 @@
 <?php get_header(); ?>
 
-	<main role="main" aria-label="Content">
+	<main role="main" aria-label="Content" class="content">
 		<!-- section -->
 		<section>
 
-			<h1><?php the_title(); ?></h1>
+			<h1 class="article-title"><?php the_title(); ?></h1>
+			<div class="post-meta">
+				<?php edit_post_link(); ?>
+			</div>
 
 		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
@@ -16,8 +19,6 @@
 				<?php comments_template( '', true ); // Remove if you don't want comments ?>
 
 				<br class="clear">
-
-				<?php edit_post_link(); ?>
 
 			</article>
 			<!-- /article -->
