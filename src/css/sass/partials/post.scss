@@ -26,6 +26,7 @@
 }
 
 article p,
+article h3,
 .intro p {
   font-family: 'Lora', serif;
   font-size: 18px;
@@ -36,6 +37,12 @@ article p,
   a {
     color: #ff53a5;
   }
+}
+
+article h3 {
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 0;
 }
 
 .view-article {

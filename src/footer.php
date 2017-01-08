@@ -28,7 +28,7 @@
 		<!-- /wrapper -->
 
 		<?php wp_footer(); ?>
-		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Lora|Montez" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Lora:400,700|Montez" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<!-- analytics -->
