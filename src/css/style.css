@@ -165,6 +165,23 @@ article h3, article h4, article h5, article h6 {
 article h3 {
   font-size: 22px; }
 
+article ul, article ol {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: normal;
+  margin-left: 40px;
+  margin-bottom: 20px; }
+
+article ul {
+  list-style-type: disc; }
+
+article ol {
+  list-style-type: decimal; }
+
+article li {
+  line-height: 1.68em;
+  margin-bottom: 8px; }
+
 .view-article {
   display: block;
   font-family: 'Lato', sans-serif;
