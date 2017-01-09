@@ -59,3 +59,24 @@ input[type="search"] {
   color: $body-bg;
   text-shadow: none;
 }
+
+blockquote {
+  background: #ffe9f3;
+  border-left: 10px solid #ff53a5;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color: #ff53a5;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote p {
+  display: inline;
+}

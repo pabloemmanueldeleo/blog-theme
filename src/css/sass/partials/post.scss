@@ -1,21 +1,19 @@
 .article-title {
   font-size: 30px;
   font-weight: bold;
-
-  a {
-    //color: #ff53a5;
-  }
+  line-height: 1.3em;
 }
 
 .post-meta {
   font-weight: 300;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+}
+
+.article-content {
+  margin-top: 15px;
 }
 
 .article-content,
-.home .post,
-.tag .post,
-.page,
 .comment-body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.11);
   margin-bottom: 20px;
@@ -25,12 +23,43 @@
   margin: 0 3px;
 }
 
+// fonts
+
+article p,
+.intro p,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6,
+.article-content ul,
+.article-content ol {
+  font-family: serif;
+}
+
+.type-loaded {
+  article p,
+  .intro p,
+  .article-content h3,
+  .article-content h4,
+  .article-content h5,
+  .article-content h6,
+  .article-content ul,
+  .article-content ol {
+    font-family: 'Lora', serif;
+  }
+
+  article p,
+  .intro p {
+    font-size: 20px;
+    line-height: 1.68em;
+  }
+}
+
 article p,
 .intro p {
-  font-family: 'Lora', serif;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: normal;
-  line-height: 1.68em;
+  line-height: 1.65em;
   margin-bottom: 20px;
 
   a {
@@ -42,17 +71,16 @@ article p,
   h3, h4, h5, h6 {
     font-weight: bold;
     margin-bottom: 0;
-    font-family: 'Lora', serif;
   }
 }
 
 .article-content h3 {
   font-size: 22px;
+  margin-bottom: 8px;
 }
 
 .article-content {
   ul, ol {
-    font-family: 'Lora', serif;
     font-size: 18px;
     font-weight: normal;
     margin-left: 40px;

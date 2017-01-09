@@ -11,3 +11,13 @@
   letter-spacing: 1px;
   font-weight: 300;
 }
+
+.intro {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 16px;
+  margin-bottom: 30px;
+
+  .comment-container, p {
+    margin-bottom: 0;
+  }
+}

@@ -5,16 +5,20 @@
 		<section>
 
 			<h1 class="article-title"><?php the_title(); ?></h1>
-			<div class="post-meta">
-				<?php edit_post_link(); ?>
-			</div>
+			<?php if ( is_user_logged_in() ) { ?>
+				<div class="post-meta">
+					<?php edit_post_link(); ?>
+				</div>
+			<?php } ?>
 
 		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
 			<!-- article -->
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-				<?php the_content(); ?>
+				<div class="article-content">
+					<?php the_content(); ?>
+				</div>
 
 				<?php comments_template( '', true ); // Remove if you don't want comments ?>
 
