@@ -11,6 +11,15 @@
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 
 		<?php wp_head(); ?>
+		<link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
+
+		<script type="text/javascript">
+			(function(w) {
+				if (document.cookie.indexOf("type_loaded") > -1 && w.document.documentElement.className.indexOf('type-loaded') === -1) {
+					w.document.documentElement.className += " type-loaded";
+				}
+			}(this));
+		</script>
 
 	</head>
 	<body <?php body_class(); ?>>

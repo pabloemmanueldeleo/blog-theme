@@ -23,9 +23,15 @@
 }
 
 .description-title {
-  font-family: 'Lora', serif;
+  font-family: serif;
   font-size: 24px;
   color: #565656;
+}
+
+.type-loaded {
+  .description-title {
+    font-family: 'Lora', serif;
+  }
 }
 
 .logo-img {

@@ -10,7 +10,7 @@
 }
 
 .article-content {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .article-content,
@@ -39,6 +39,8 @@ article p,
 .type-loaded {
   article p,
   .intro p,
+  .article-content h1,
+  .article-content h2,
   .article-content h3,
   .article-content h4,
   .article-content h5,
@@ -60,7 +62,7 @@ article p,
   font-size: 22px;
   font-weight: normal;
   line-height: 1.65em;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   a {
     color: #ff53a5;
@@ -68,15 +70,17 @@ article p,
 }
 
 .article-content {
-  h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     margin-bottom: 0;
   }
 }
 
-.article-content h3 {
-  font-size: 22px;
-  margin-bottom: 8px;
+.article-content {
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
 }
 
 .article-content {
@@ -84,7 +88,7 @@ article p,
     font-size: 18px;
     font-weight: normal;
     margin-left: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   ul {
@@ -105,9 +109,10 @@ article p,
   display: block;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  margin-top: 20px;
+  margin-top: 10px;
   color: rgba(0,0,0,.44);
   font-size: 16px;
+  margin-bottom: -10px;
 }
 
 .tag-title {

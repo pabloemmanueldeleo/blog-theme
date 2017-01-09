@@ -1,5 +1,10 @@
 var FontFaceObserver = require('fontfaceobserver');
 var Prism = require('prismjs');
+var Cookies = require('js-cookie');
+
+if (document.documentElement.className.indexOf("type-loaded") > -1) {
+  return;
+}
 
 // Fonts
 var loraRegular = new FontFaceObserver('Lora', {
@@ -13,5 +18,6 @@ var loraBold = new FontFaceObserver('Lora', {
 Promise.all([loraRegular.load(), loraBold.load()]).then(function () {
   // console.log('Family A & B have loaded');
   document.documentElement.className += " type-loaded";
-  console.log('this is loaded')
+  Cookies.set('type_loaded', 'true', { expires: 1, domain: 'localhost' });
+  console.log('font loaded!')
 });
