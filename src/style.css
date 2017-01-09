@@ -526,7 +526,7 @@ article p,
   position: relative; }
 
 .content {
-  margin: 30px auto auto auto; }
+  margin: 30px auto; }
 
 /**
  * partials/header
@@ -609,7 +609,7 @@ article p,
   font-weight: 300; }
 
 .intro {
-  background: rgba(0, 0, 0, 0.04);
+  background: #ffe9f3;
   padding: 16px;
   margin-bottom: 30px; }
   .intro .comment-container, .intro p {
