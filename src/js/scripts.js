@@ -968,7 +968,14 @@ Prism.languages.js = Prism.languages.javascript;
 var FontFaceObserver = require('fontfaceobserver');
 var Prism = require('prismjs');
 var Cookies = require('js-cookie');
+var PrismPHP = require('./prism-languages/prism-php.js');
+var PrismBash = require('./prism-languages/prism-bash.js');
+var PrismSCSS = require('./prism-languages/prism-scss.js');
 
+/**
+ * Fonts related code section. Don't put any code right after this section
+ * since it will not execute if return; under the if statement is executed.
+ */
 if (document.documentElement.className.indexOf("type-loaded") > -1) {
   return;
 }
@@ -989,4 +996,276 @@ Promise.all([loraRegular.load(), loraBold.load()]).then(function () {
   console.log('font loaded!')
 });
 
-},{"fontfaceobserver":1,"js-cookie":2,"prismjs":3}]},{},[4])
+},{"./prism-languages/prism-bash.js":5,"./prism-languages/prism-php.js":6,"./prism-languages/prism-scss.js":7,"fontfaceobserver":1,"js-cookie":2,"prismjs":3}],5:[function(require,module,exports){
+(function(Prism) {
+	var insideString = {
+		variable: [
+			// Arithmetic Environment
+			{
+				pattern: /\$?\(\([\w\W]+?\)\)/,
+				inside: {
+					// If there is a $ sign at the beginning highlight $(( and )) as variable
+					variable: [{
+							pattern: /(^\$\(\([\w\W]+)\)\)/,
+							lookbehind: true
+						},
+						/^\$\(\(/,
+					],
+					number: /\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,
+					// Operators according to https://www.gnu.org/software/bash/manual/bashref.html#Shell-Arithmetic
+					operator: /--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,
+					// If there is no $ sign at the beginning highlight (( and )) as punctuation
+					punctuation: /\(\(?|\)\)?|,|;/
+				}
+			},
+			// Command Substitution
+			{
+				pattern: /\$\([^)]+\)|`[^`]+`/,
+				inside: {
+					variable: /^\$\(|^`|\)$|`$/
+				}
+			},
+			/\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i
+		],
+	};
+
+	Prism.languages.bash = {
+		'shebang': {
+			pattern: /^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,
+			alias: 'important'
+		},
+		'comment': {
+			pattern: /(^|[^"{\\])#.*/,
+			lookbehind: true
+		},
+		'string': [
+			//Support for Here-Documents https://en.wikipedia.org/wiki/Here_document
+			{
+				pattern: /((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,
+				lookbehind: true,
+				greedy: true,
+				inside: insideString
+			},
+			{
+				pattern: /(["'])(?:\\\\|\\?[^\\])*?\1/g,
+				greedy: true,
+				inside: insideString
+			}
+		],
+		'variable': insideString.variable,
+		// Originally based on http://ss64.com/bash/
+		'function': {
+			pattern: /(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|npm|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,
+			lookbehind: true
+		},
+		'keyword': {
+			pattern: /(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,
+			lookbehind: true
+		},
+		'boolean': {
+			pattern: /(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,
+			lookbehind: true
+		},
+		'operator': /&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,
+		'punctuation': /\$?\(\(?|\)\)?|\.\.|[{}[\];]/
+	};
+
+	var inside = insideString.variable[1].inside;
+	inside['function'] = Prism.languages.bash['function'];
+	inside.keyword = Prism.languages.bash.keyword;
+	inside.boolean = Prism.languages.bash.boolean;
+	inside.operator = Prism.languages.bash.operator;
+	inside.punctuation = Prism.languages.bash.punctuation;
+})(Prism);
+
+},{}],6:[function(require,module,exports){
+/**
+ * Original by Aaron Harun: http://aahacreative.com/2012/07/31/php-syntax-highlighting-prism/
+ * Modified by Miles Johnson: http://milesj.me
+ *
+ * Supports the following:
+ * 		- Extends clike syntax
+ * 		- Support for PHP 5.3+ (namespaces, traits, generators, etc)
+ * 		- Smarter constant and function matching
+ *
+ * Adds the following new token classes:
+ * 		constant, delimiter, variable, function, package
+ */
+
+Prism.languages.php = Prism.languages.extend('clike', {
+	'keyword': /\b(and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|private|protected|parent|throw|null|echo|print|trait|namespace|final|yield|goto|instanceof|finally|try|catch)\b/i,
+	'constant': /\b[A-Z0-9_]{2,}\b/,
+	'comment': {
+		pattern: /(^|[^\\])(?:\/\*[\w\W]*?\*\/|\/\/.*)/,
+		lookbehind: true,
+		greedy: true
+	}
+});
+
+// Shell-like comments are matched after strings, because they are less
+// common than strings containing hashes...
+Prism.languages.insertBefore('php', 'class-name', {
+	'shell-comment': {
+		pattern: /(^|[^\\])#.*/,
+		lookbehind: true,
+		alias: 'comment'
+	}
+});
+
+Prism.languages.insertBefore('php', 'keyword', {
+	'delimiter': /\?>|<\?(?:php)?/i,
+	'variable': /\$\w+\b/i,
+	'package': {
+		pattern: /(\\|namespace\s+|use\s+)[\w\\]+/,
+		lookbehind: true,
+		inside: {
+			punctuation: /\\/
+		}
+	}
+});
+
+// Must be defined after the function pattern
+Prism.languages.insertBefore('php', 'operator', {
+	'property': {
+		pattern: /(->)[\w]+/,
+		lookbehind: true
+	}
+});
+
+// Add HTML support of the markup language exists
+if (Prism.languages.markup) {
+
+	// Tokenize all inline PHP blocks that are wrapped in <?php ?>
+	// This allows for easy PHP + markup highlighting
+	Prism.hooks.add('before-highlight', function(env) {
+		if (env.language !== 'php') {
+			return;
+		}
+
+		env.tokenStack = [];
+
+		env.backupCode = env.code;
+		env.code = env.code.replace(/(?:<\?php|<\?)[\w\W]*?(?:\?>)/ig, function(match) {
+			env.tokenStack.push(match);
+
+			return '{{{PHP' + env.tokenStack.length + '}}}';
+		});
+	});
+
+	// Restore env.code for other plugins (e.g. line-numbers)
+	Prism.hooks.add('before-insert', function(env) {
+		if (env.language === 'php') {
+			env.code = env.backupCode;
+			delete env.backupCode;
+		}
+	});
+
+	// Re-insert the tokens after highlighting
+	Prism.hooks.add('after-highlight', function(env) {
+		if (env.language !== 'php') {
+			return;
+		}
+
+		for (var i = 0, t; t = env.tokenStack[i]; i++) {
+			// The replace prevents $$, $&, $`, $', $n, $nn from being interpreted as special patterns
+			env.highlightedCode = env.highlightedCode.replace('{{{PHP' + (i + 1) + '}}}', Prism.highlight(t, env.grammar, 'php').replace(/\$/g, '$$$$'));
+		}
+
+		env.element.innerHTML = env.highlightedCode;
+	});
+
+	// Wrap tokens in classes that are missing them
+	Prism.hooks.add('wrap', function(env) {
+		if (env.language === 'php' && env.type === 'markup') {
+			env.content = env.content.replace(/(\{\{\{PHP[0-9]+\}\}\})/g, "<span class=\"token php\">$1</span>");
+		}
+	});
+
+	// Add the rules before all others
+	Prism.languages.insertBefore('php', 'comment', {
+		'markup': {
+			pattern: /<[^?]\/?(.*?)>/,
+			inside: Prism.languages.markup
+		},
+		'php': /\{\{\{PHP[0-9]+\}\}\}/
+	});
+}
+
+},{}],7:[function(require,module,exports){
+Prism.languages.scss = Prism.languages.extend('css', {
+	'comment': {
+		pattern: /(^|[^\\])(?:\/\*[\w\W]*?\*\/|\/\/.*)/,
+		lookbehind: true
+	},
+	'atrule': {
+		pattern: /@[\w-]+(?:\([^()]+\)|[^(])*?(?=\s+[{;])/,
+		inside: {
+			'rule': /@[\w-]+/
+			// See rest below
+		}
+	},
+	// url, compassified
+	'url': /(?:[-a-z]+-)*url(?=\()/i,
+	// CSS selector regex is not appropriate for Sass
+	// since there can be lot more things (var, @ directive, nesting..)
+	// a selector must start at the end of a property or after a brace (end of other rules or nesting)
+	// it can contain some characters that aren't used for defining rules or end of selector, & (parent selector), or interpolated variable
+	// the end of a selector is found when there is no rules in it ( {} or {\s}) or if there is a property (because an interpolated var
+	// can "pass" as a selector- e.g: proper#{$erty})
+	// this one was hard to do, so please be careful if you edit this one :)
+	'selector': {
+		// Initial look-ahead is used to prevent matching of blank selectors
+		pattern: /(?=\S)[^@;\{\}\(\)]?([^@;\{\}\(\)]|&|#\{\$[-_\w]+\})+(?=\s*\{(\}|\s|[^\}]+(:|\{)[^\}]+))/m,
+		inside: {
+			'parent': {
+				pattern: /&/,
+				alias: 'important'
+			},
+			'placeholder': /%[-_\w]+/,
+			'variable': /\$[-_\w]+|#\{\$[-_\w]+\}/
+		}
+	}
+});
+
+Prism.languages.insertBefore('scss', 'atrule', {
+	'keyword': [
+		/@(?:if|else(?: if)?|for|each|while|import|extend|debug|warn|mixin|include|function|return|content)/i,
+		{
+			pattern: /( +)(?:from|through)(?= )/,
+			lookbehind: true
+		}
+	]
+});
+
+Prism.languages.scss.property = {
+	pattern: /(?:[\w-]|\$[-_\w]+|#\{\$[-_\w]+\})+(?=\s*:)/i,
+	inside: {
+		'variable': /\$[-_\w]+|#\{\$[-_\w]+\}/
+	}
+};
+
+Prism.languages.insertBefore('scss', 'important', {
+	// var and interpolated vars
+	'variable': /\$[-_\w]+|#\{\$[-_\w]+\}/
+});
+
+Prism.languages.insertBefore('scss', 'function', {
+	'placeholder': {
+		pattern: /%[-_\w]+/,
+		alias: 'selector'
+	},
+	'statement': {
+		pattern: /\B!(?:default|optional)\b/i,
+		alias: 'keyword'
+	},
+	'boolean': /\b(?:true|false)\b/,
+	'null': /\bnull\b/,
+	'operator': {
+		pattern: /(\s)(?:[-+*\/%]|[=!]=|<=?|>=?|and|or|not)(?=\s)/,
+		lookbehind: true
+	}
+});
+
+Prism.languages.scss['atrule'].inside.rest = Prism.util.clone(Prism.languages.scss);
+
+},{}]},{},[4])

@@ -1,7 +1,14 @@
 var FontFaceObserver = require('fontfaceobserver');
 var Prism = require('prismjs');
 var Cookies = require('js-cookie');
+var PrismPHP = require('./prism-languages/prism-php.js');
+var PrismBash = require('./prism-languages/prism-bash.js');
+var PrismSCSS = require('./prism-languages/prism-scss.js');
 
+/**
+ * Fonts related code section. Don't put any code right after this section
+ * since it will not execute if return; under the if statement is executed.
+ */
 if (document.documentElement.className.indexOf("type-loaded") > -1) {
   return;
 }
