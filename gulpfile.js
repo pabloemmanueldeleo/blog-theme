@@ -2,6 +2,9 @@
 "use strict";
 
 var gulp = require( "gulp" ),
+  /** Compress images **/
+  imagemin = require( "gulp-imagemin" ),
+  /** Allow browserify to be used in dev **/
   browserify = require( "gulp-browserify" ),
 	/** @type {Object} Loader of Gulp plugins from `package.json` */
 	$ = require( "gulp-load-plugins" )(),
@@ -151,6 +154,13 @@ gulp.task( "watch", [ "template", "styles" ], function() {
 	], [ "styles" ] );
 });
 
+/** Compress Images */
+gulp.task( "images", function() {
+  gulp.src( 'src/img/*' )
+      .pipe( imagemin() )
+      .pipe( gulp.dest( 'blog-theme/img' ) )
+});
+
 /** Build */
 gulp.task( "build", [
 	"envProduction",
@@ -158,7 +168,8 @@ gulp.task( "build", [
 	"template",
 	"styles",
 	"copy",
-	"uglify"
+	"uglify",
+  "images"
 ], function () {
 	console.log("Build is finished");
 });
