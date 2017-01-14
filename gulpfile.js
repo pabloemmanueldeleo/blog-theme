@@ -12,7 +12,7 @@ var gulp = require( "gulp" ),
 		/** Conditionizr */
 		"src/js/lib/conditionizr-4.3.0.min.js",
 		/** jQuery */
-		"src/bower_components/jquery/dist/jquery.js",
+		"src/bower_components/jquery/blog-theme/jquery.js",
 		/** Page scripts */
 		"src/js/scripts.js"
 	],
@@ -54,7 +54,7 @@ var gulp = require( "gulp" ),
 	} ());
 
 /** Clean */
-gulp.task( "clean", require( "del" ).bind( null, [ ".tmp", "dist" ] ) );
+gulp.task( "clean", require( "del" ).bind( null, [ ".tmp", "blog-theme" ] ) );
 
 /** Copy */
 gulp.task( "copy", function() {
@@ -67,7 +67,7 @@ gulp.task( "copy", function() {
 		], {
 			base: "src"
 		})
-		.pipe( gulp.dest( "dist" ) );
+		.pipe( gulp.dest( "blog-theme" ) );
 });
 
 /** CSS Preprocessors */
@@ -123,7 +123,7 @@ gulp.task( "uglify", function() {
 	return gulp.src( uglifySrc )
 		.pipe( $.concat( "scripts.min.js" ) )
 		.pipe( $.uglify() )
-		.pipe( gulp.dest( "dist/js" ) );
+		.pipe( gulp.dest( "blog-theme/js" ) );
 });
 
 /** `env` to 'production' */

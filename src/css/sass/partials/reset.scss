@@ -46,6 +46,10 @@ a {
   &:active {}
 }
 
+em {
+	font-style: italic;
+}
+
 input[type="text"],
 input[type="search"] {
   font-size: inherit;

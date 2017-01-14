@@ -23,6 +23,11 @@
   margin: 0 3px;
 }
 
+.post-meta .comments:before {
+  content: " \2022 ";
+  margin: 0 5px;
+}
+
 // fonts
 
 article p,

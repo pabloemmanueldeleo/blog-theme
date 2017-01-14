@@ -24,7 +24,7 @@
 					<?php the_date(); ?> <?php the_time(); ?>
 				</time>
 			</span>
-			<span class="comments"><?php if (comments_open( get_the_ID() ) ) comments_popup_link( __( '<span class="separator">&bull;</span> Leave your thoughts', 'html5blank' ), __( '<span class="separator">&bull;</span> 1 Comment', 'html5blank' ), __( '<span class="separator">&bull;</span> % Comments', 'html5blank' )); ?></span>
+			<span class="comments"><?php if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'html5blank' ), __( '1 Comment', 'html5blank' ), __( '% Comments', 'html5blank' )); ?></span>
 				<span><?php the_tags( __( '<span class="separator">&bull;</span> Tags: ', 'html5blank' ), ', ', ''); ?></span>
 			<?php if ( is_user_logged_in() ) { ?>
 			<span class="separator">&bull;</span>
