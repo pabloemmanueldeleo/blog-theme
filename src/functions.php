@@ -401,7 +401,7 @@ add_filter('style_loader_tag', 'html5_style_remove'); // Remove 'text/css' from 
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('post_thumbnail_html', 'remove_width_attribute', 10 ); // Remove width and height dynamic attributes to post images
 add_filter('image_send_to_editor', 'remove_width_attribute', 10 ); // Remove width and height dynamic attributes to post images
-
+add_filter('jetpack_open_graph_tags', 'modify_jetpack_ogtags'); // Change jetpack OG Tags
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
 
@@ -411,6 +411,16 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 
 // Shortcodes above would be nested like this -
 // [html5_shortcode_demo] [html5_shortcode_demo_2] Here's the page title! [/html5_shortcode_demo_2] [/html5_shortcode_demo]
+
+/*------------------------------------*\
+    Jetpack Update
+\*------------------------------------*/
+
+function modify_jetpack_ogtags($tags)
+{
+  $tags['og:image'] = get_template_directory_uri() . '/img/logo.png';
+	return $tags;
+}
 
 /*------------------------------------*\
     Custom Post Types
